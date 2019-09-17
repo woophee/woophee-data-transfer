@@ -3,18 +3,22 @@ package com.woophee.kafka.producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.annotation.PostConstruct;
 import java.util.Properties;
 
 public abstract class AbstractKafkaProducer {
 
+    @Value("${kafka.bootstrap.servers}")
+    private String bootstrapServers;
+
     private Producer<Object, Object> producer;
 
     @PostConstruct
     public void init(){
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", bootstrapServers);
         props.put("acks", "all");
         props.put("retries", 0);
         props.put("batch.size", 16384);
@@ -32,9 +36,9 @@ public abstract class AbstractKafkaProducer {
         producer.close();
     }
 
-    protected abstract String getKeySerializer();
+    protected abstract Class getKeySerializer();
 
-    protected abstract String getValueSerializer();
+    protected abstract Class getValueSerializer();
 
     protected abstract String getTopic();
 
