@@ -1,5 +1,7 @@
 package com.woophee.kafka.producer;
 
+import com.woophee.model.others.TradeData;
+import com.woophee.model.others.TradeDataSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,7 @@ public class TradeKafkaProducer extends AbstractKafkaProducer {
 
     @Override
     protected Class getValueSerializer() {
-        return StringSerializer.class;
+        return TradeDataSerializer.class;
     }
 
     @Override
