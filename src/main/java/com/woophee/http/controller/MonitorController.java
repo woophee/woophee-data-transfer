@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 @RestController
 @RequestMapping(value = "/monitor")
 public class MonitorController {
@@ -35,9 +37,9 @@ public class MonitorController {
     @RequestMapping(value="/auto-trade-write",method= RequestMethod.POST)
     public void autoTradeWrite(){
         TradeData tradeData = new TradeData();
-        tradeData.setUserId("1");
-        tradeData.setItemId("1");
-        tradeData.setCategoryId("1");
+        tradeData.setUserId(String.valueOf(new Random().nextInt(10)+1));
+        tradeData.setItemId(String.valueOf(new Random().nextInt(10)+1));
+        tradeData.setCategoryId(String.valueOf(new Random().nextInt(100)+1));
         tradeData.setBehavior("pv");
         tradeData.setTimestamp(System.currentTimeMillis());
         monitorService.tradeWrite(tradeData);
