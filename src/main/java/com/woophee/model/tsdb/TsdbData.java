@@ -1,8 +1,8 @@
-package com.woophee.model.monitor;
+package com.woophee.model.tsdb;
 
 import java.util.Map;
 
-public class MonitorData {
+public class TsdbData {
     private String measurement;
     private Map<String, String> tags;
     private Map<String, Object> fields;

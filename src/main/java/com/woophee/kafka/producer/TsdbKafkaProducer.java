@@ -1,13 +1,14 @@
 package com.woophee.kafka.producer;
 
+import com.woophee.model.tsdb.TsdbDataSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TestKafkaProducer extends AbstractKafkaProducer{
+public class TsdbKafkaProducer extends AbstractKafkaProducer {
 
-    @Value("${kafka.test.topic}")
+    @Value("${kafka.tsdb.topic}")
     private String topic;
 
     @Override
@@ -17,7 +18,7 @@ public class TestKafkaProducer extends AbstractKafkaProducer{
 
     @Override
     protected Class getValueSerializer() {
-        return StringSerializer.class;
+        return TsdbDataSerializer.class;
     }
 
     @Override

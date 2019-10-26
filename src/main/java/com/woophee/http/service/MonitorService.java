@@ -1,9 +1,11 @@
 package com.woophee.http.service;
 
-import com.woophee.model.monitor.MonitorData;
-import com.woophee.model.others.TradeData;
+import com.woophee.model.rum.RumData;
 
+/**
+ * 监控系统中各种类型的数据
+ */
 public interface MonitorService {
-    void monitorWrite(MonitorData monitorData);
-    void tradeWrite(TradeData tradeData);
+
+    void rumWrite(RumData rumData);
 }

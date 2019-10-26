@@ -1,13 +1,14 @@
 package com.woophee.kafka.producer;
 
+import com.woophee.model.rum.RumDataSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MonitorKafkaProducer extends AbstractKafkaProducer {
+public class RumKafkaProducer extends AbstractKafkaProducer {
 
-    @Value("${kafka.monitor.topic}")
+    @Value("${kafka.rum.topic}")
     private String topic;
 
     @Override
@@ -17,7 +18,7 @@ public class MonitorKafkaProducer extends AbstractKafkaProducer {
 
     @Override
     protected Class getValueSerializer() {
-        return StringSerializer.class;
+        return RumDataSerializer.class;
     }
 
     @Override

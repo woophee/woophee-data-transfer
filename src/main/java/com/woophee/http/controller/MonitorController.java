@@ -1,7 +1,10 @@
 package com.woophee.http.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.woophee.http.service.MonitorService;
-import com.woophee.model.monitor.MonitorData;
+import com.woophee.model.rum.RumData;
+import com.woophee.model.tsdb.TsdbData;
 import com.woophee.model.others.TradeData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,30 +21,28 @@ public class MonitorController {
     @Autowired
     private MonitorService monitorService;
 
-    @RequestMapping(value="/auto-monitor-write",method= RequestMethod.POST)
-    public void autoMonitorWrite(){
-        MonitorData monitorData = new MonitorData();
-        monitorService.monitorWrite(monitorData);
+    @RequestMapping(value="/rum-write",method= RequestMethod.POST)
+    public void rumWrite(@RequestBody RumData rumData){
+        monitorService.rumWrite(rumData);
     }
 
-    @RequestMapping(value="/monitor-write",method= RequestMethod.POST)
-    public void monitorWrite(@RequestBody MonitorData monitorData){
-        monitorService.monitorWrite(monitorData);
+    @RequestMapping(value="/auto-rum-write",method= RequestMethod.POST)
+    public void autoRumWrite(){
+        RumData rumData = new RumData();
+        rumData.setAppId("PV" + (new Random().nextInt(10)+1));
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("param", "param");
+        jsonObject.put("url","http://url");
+        jsonArray.add(jsonObject);
+        rumData.setData(jsonArray);
+        rumData.setDeviceId("uuid");
+        rumData.setMessageType("LB_SPA_INFO");
+        rumData.setSampleRate("3000");
+        rumData.setSecretId("PV" + (new Random().nextInt(10)+1));
+        rumData.setSessionId("uuid");
+        rumData.setTimestamp(System.currentTimeMillis());
+        monitorService.rumWrite(rumData);
     }
 
-    @RequestMapping(value="/trade-write",method= RequestMethod.POST)
-    public void tradeWrite(@RequestBody TradeData tradeData){
-        monitorService.tradeWrite(tradeData);
-    }
-
-    @RequestMapping(value="/auto-trade-write",method= RequestMethod.POST)
-    public void autoTradeWrite(){
-        TradeData tradeData = new TradeData();
-        tradeData.setUserId(String.valueOf(new Random().nextInt(10)+1));
-        tradeData.setItemId(String.valueOf(new Random().nextInt(10)+1));
-        tradeData.setCategoryId(String.valueOf(new Random().nextInt(100)+1));
-        tradeData.setBehavior("pv");
-        tradeData.setTimestamp(System.currentTimeMillis());
-        monitorService.tradeWrite(tradeData);
-    }
 }
