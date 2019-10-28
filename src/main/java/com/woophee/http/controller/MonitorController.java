@@ -29,7 +29,7 @@ public class MonitorController {
     @RequestMapping(value="/auto-rum-write",method= RequestMethod.POST)
     public void autoRumWrite(){
         RumData rumData = new RumData();
-        rumData.setAppId("PV" + (new Random().nextInt(10)+1));
+        rumData.setAppId("PV-" + (new Random().nextInt(10)+1));
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("param", "param");
