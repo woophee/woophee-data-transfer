@@ -2,6 +2,8 @@ package com.woophee.model.rum;
 
 import com.alibaba.fastjson.JSONArray;
 
+import java.sql.Timestamp;
+
 public class RumData {
     private String appId;
     private JSONArray data;
@@ -10,7 +12,7 @@ public class RumData {
     private String sampleRate;
     private String secretId;
     private String sessionId;
-    private long timestamp;
+    private String ts;
 
     public String getAppId() {
         return appId;
@@ -68,11 +70,11 @@ public class RumData {
         this.sessionId = sessionId;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public String getTs() {
+        return ts;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public void setTs(String ts) {
+        this.ts = ts;
     }
 }

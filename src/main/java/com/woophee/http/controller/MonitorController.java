@@ -1,5 +1,6 @@
 package com.woophee.http.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.woophee.http.service.MonitorService;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 @RestController
@@ -41,7 +45,8 @@ public class MonitorController {
         rumData.setSampleRate("3000");
         rumData.setSecretId("PV" + (new Random().nextInt(10)+1));
         rumData.setSessionId("uuid");
-        rumData.setTimestamp(System.currentTimeMillis());
+        rumData.setTs(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").format(new Date()));
+        System.out.println(JSON.toJSONString(rumData));
         monitorService.rumWrite(rumData);
     }
 
