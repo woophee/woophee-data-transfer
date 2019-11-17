@@ -22,6 +22,8 @@ import java.util.Random;
 @RequestMapping(value = "/monitor")
 public class MonitorController {
 
+    private static Boolean flag = true;
+
     @Autowired
     private MonitorService monitorService;
 
@@ -41,7 +43,13 @@ public class MonitorController {
         jsonArray.add(jsonObject);
         rumData.setData(jsonArray);
         rumData.setDeviceId("uuid");
-        rumData.setMessageType("LB_SPA_INFO");
+        if(flag) {
+            rumData.setMessageType("LB_SPA_INFO");
+            flag = false;
+        }else{
+            rumData.setMessageType("LB_DEVICE_INFO");
+            flag = true;
+        }
         rumData.setSampleRate("3000");
         rumData.setSecretId("PV" + (new Random().nextInt(10)+1));
         rumData.setSessionId("uuid");
