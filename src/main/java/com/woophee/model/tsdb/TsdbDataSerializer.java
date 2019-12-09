@@ -7,7 +7,7 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
-public class TsdbDataSerializer  implements Serializer<TsdbData> {
+public class TsdbDataSerializer implements Serializer<TsdbData> {
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
 
