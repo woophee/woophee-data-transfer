@@ -3,6 +3,7 @@ package com.woophee.model.state;
 public class StateData {
     private Integer id;
     private Boolean flag;
+    private Integer number;
     private String attachment;
     private String message;
     private Long timestamp;
@@ -21,6 +22,14 @@ public class StateData {
 
     public void setFlag(Boolean flag) {
         this.flag = flag;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public String getAttachment() {
@@ -46,4 +55,5 @@ public class StateData {
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
+
 }
