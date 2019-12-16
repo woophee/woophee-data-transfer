@@ -1,11 +1,13 @@
 package com.woophee.kafka.producer;
 
+import com.woophee.model.MapSerializer;
 import com.woophee.model.others.TradeDataSerializer;
 import com.woophee.model.state.StateDataSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -16,7 +18,7 @@ public class StateKafkaProducer  extends AbstractKafkaProducer {
 
     @Override
     protected Class getKeySerializer() {
-        return Map.class;
+        return MapSerializer.class;
     }
 
     @Override

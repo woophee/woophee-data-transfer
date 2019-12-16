@@ -15,12 +15,12 @@ public class RumDataSerializer implements Serializer<RumData> {
 
     @Override
     public byte[] serialize(String s, RumData rumData) {
-        return JSON.toJSONString(rumData).getBytes();
+        return JSON.toJSONBytes(rumData);
     }
 
     @Override
     public byte[] serialize(String topic, Headers headers, RumData rumData) {
-        return JSON.toJSONString(rumData).getBytes();
+        return JSON.toJSONBytes(rumData);
     }
 
     @Override

@@ -14,12 +14,12 @@ public class StateDataSerializer  implements Serializer<StateData> {
 
     @Override
     public byte[] serialize(String s, StateData stateData) {
-        return JSON.toJSONString(stateData).getBytes();
+        return JSON.toJSONBytes(stateData);
     }
 
     @Override
     public byte[] serialize(String topic, Headers headers, StateData stateData) {
-        return JSON.toJSONString(stateData).getBytes();
+        return JSON.toJSONBytes(stateData);
     }
 
     @Override

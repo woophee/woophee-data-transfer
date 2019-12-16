@@ -15,12 +15,12 @@ public class TsdbDataSerializer implements Serializer<TsdbData> {
 
     @Override
     public byte[] serialize(String s, TsdbData tsdbData) {
-        return JSON.toJSONString(tsdbData).getBytes();
+        return JSON.toJSONBytes(tsdbData);
     }
 
     @Override
     public byte[] serialize(String topic, Headers headers, TsdbData tsdbData) {
-        return JSON.toJSONString(tsdbData).getBytes();
+        return JSON.toJSONBytes(tsdbData);
     }
 
     @Override
