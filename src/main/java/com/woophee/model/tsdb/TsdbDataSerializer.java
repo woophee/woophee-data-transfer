@@ -14,7 +14,7 @@ public class TsdbDataSerializer implements Serializer<TsdbData> {
     }
 
     @Override
-    public byte[] serialize(String s, TsdbData tsdbData) {
+    public byte[] serialize(String topic, TsdbData tsdbData) {
         return JSON.toJSONBytes(tsdbData);
     }
 

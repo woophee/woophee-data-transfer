@@ -14,7 +14,7 @@ public class RumDataSerializer implements Serializer<RumData> {
     }
 
     @Override
-    public byte[] serialize(String s, RumData rumData) {
+    public byte[] serialize(String topic, RumData rumData) {
         return JSON.toJSONBytes(rumData);
     }
 

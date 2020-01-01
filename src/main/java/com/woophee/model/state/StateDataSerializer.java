@@ -13,7 +13,7 @@ public class StateDataSerializer  implements Serializer<StateData> {
     }
 
     @Override
-    public byte[] serialize(String s, StateData stateData) {
+    public byte[] serialize(String topic, StateData stateData) {
         return JSON.toJSONBytes(stateData);
     }
 

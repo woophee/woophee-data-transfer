@@ -13,7 +13,7 @@ public class TradeDataSerializer implements Serializer<TradeData> {
     }
 
     @Override
-    public byte[] serialize(String s, TradeData tradeData) {
+    public byte[] serialize(String topic, TradeData tradeData) {
         return JSON.toJSONBytes(tradeData);
     }
 
