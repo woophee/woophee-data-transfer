@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <kafka.version>2.3.0</kafka.version>
+        <kafka.version>2.6.3</kafka.version>
         <swagger.version>2.9.2</swagger.version>
         <fastjson.version>1.2.61</fastjson.version>
     </properties>
